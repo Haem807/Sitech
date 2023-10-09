@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIT</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- ======== Main wrapper for dashboard =========== -->
+
+    <div class="wrapper">
+        <!-- =========== Sidebar for admin dashboard =========== -->
+
+        <aside id="sidebar">
+
+            <!-- ======== Content For Sidebar ========-->
+            <div class="h-100">
+                <div class="sidebar-logo">
+                    <a href="#">
+                        <img class="imagen" src="image/interfaz-de-usuario-de-administrador.png" alt="">
+                    </a>
+                </div>
+                <ul class="sidebar-nav">
+                    <li class="sidebar-header">
+                        Administrador
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="#" class="sidebar-link">
+                            REPORTES
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="#" class="sidebar-link">
+                            GESTIÓN RUTAS Y HORARIOS
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="#" class="sidebar-link">
+                            GESTIÓN CONDUCTORES
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="#" class="sidebar-link">
+                            GESTIÓN UNIDADES
+                        </a>
+                    </li>
+                </ul>
+
+
+                <!-- ======= Navigation links for sidebar ======== -->
+                <ul class="sidebar-nav">
+
+
+
+                </ul>
+            </div>
+        </aside>
+
+        <!-- ========= Main section of dashboard ======= -->
+
+        <div class="main">
+
+            <!-- ========= Main navbar section of dashboard ======= -->
+
+            <nav class="navbar navbar-expand px-3 border-bottom">
+                <button class="btn" id="sidebar-toggle" type="button">
+                    <span class="navbar-toggler-icon"></span>
+
+                </button>
+                <div class="navbar-collapse navbar">
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
+                                <img src="image/icono.png" class="avatar img-fluid rounded" alt="">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </nav>
+
+            <!-- ========= Main content section of dashboard ======= -->
+
+            <main class="content px-3 py-2">
+                <div class="container-fluid">
+                    <div class="mb-3">
+                        <h3>REPORTE PAGOS POR RUTA</h3>
+                    </div>
+                    <div class="input-group mb-5">
+                        <span class="input-group-text">Buscar</span>
+                        <input type="text" aria-label="First name" class="form-control">
+                        <button type="button" class="btn btn-primary">Filtrar</button>
+                    </div>
+                    <table class="table table-success  table-striped-columns">
+                        <thead>
+                          <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Ruta</th>
+                            <th scope="col">Linea</th>
+                            <th scope="col">Conductor</th>
+                            <th scope="col">Monto Pagado</th>
+                            <th scope="col">Tiempo Servicio</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">1</th>
+                            <td>R-1</td>
+                            <td>C-1</td>
+                            <td>Juan Velazco</td>
+                            <td>800</td>
+                            <td>950 días</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    
+
+                    
+                </div>
+                <div class="centrar">
+                    <button type="button" class="btn btn-primary mx-3">IMPRIMIR</button>
+                </div>
+
+            </main>
+
+            <!-- ========= light and dark mode toggle button ======= -->
+
+            <a href="#" class="theme-toggle">
+                <i class="fa-regular fa-moon"></i>
+                <i class="fa-regular fa-sun"></i>
+            </a>
+
+            <!-- ========= footer section of dashboard ======= -->
+
+            <footer class="footer">
+
+            </footer>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

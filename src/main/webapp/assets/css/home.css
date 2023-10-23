@@ -1,0 +1,31 @@
+
+main{
+  height: 90vh;
+}
+h1{
+  font-size: 50px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #646cff;
+}
+h6{
+  font-weight: 400;
+}
+
+#intro{
+  width: 600px;
+}
+
+#cards{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  
+}
+#card{
+  padding: 20px;
+  background-color: #252529;
+  border-radius: 10px;
+  margin: 10px;
+  width: 350px;
+}

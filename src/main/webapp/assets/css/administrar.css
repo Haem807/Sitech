@@ -1,0 +1,28 @@
+table{
+  width: 100%;
+}
+h3{
+  color: #747bff;
+}
+#tabla{
+  border: 1px solid #c2c2c22c;
+  border-radius: 15px;
+  padding: 30px;
+
+}
+th{
+  font-weight: 400;
+  text-align: center;
+}
+td{
+  color: #dddddd;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.5;
+}
+th,td{
+  border-bottom: 1px solid #e6e6e633;
+  padding: 10px 15px;
+  
+}
+

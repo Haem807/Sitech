@@ -24,11 +24,11 @@
             <div class="h-100">
                 <div class="sidebar-logo">
                     <a href="#">
-                        <img class="imagen" src="../image/interfaz-de-usuario-de-administrador.png" alt="" />
+                        <img class="imagen" src="image/interfaz-de-usuario-de-administrador.png" alt="" />
                     </a>
                 </div>
                 <ul class="sidebar-nav">
-                    
+                    <li class="sidebar-header">Saldo: S/41.00</li>
                     <li class="sidebar-item">
                         <a href="#" class="sidebar-link"> RUTAS Y HORARIOS </a>
                     </li>
@@ -61,7 +61,7 @@
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
                             <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
-                                <img src="../image/icono.png" class="avatar img-fluid rounded" alt="" />
+                                <img src="../img/icono.png" class="avatar img-fluid rounded" alt="" />
                             </a>
                         </li>
                     </ul>

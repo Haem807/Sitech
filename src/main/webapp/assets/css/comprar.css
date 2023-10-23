@@ -1,0 +1,28 @@
+#tarjetita, #deposito {
+  background-color: #fff;
+  border-radius: 15px;
+  border: none;
+  padding: 30px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#recoger{
+  background-color: #f7f7f7;
+  border-radius: 15px;
+  border: none;
+  padding: 30px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.btn-recoger{
+  color: #000;
+  padding: 10px 20px;
+  
+  border-radius: 10px;
+  background-color: #646cff;
+}

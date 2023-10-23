@@ -1,259 +1,117 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap");
 
-*,
-::after,
-::before {
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
+#header {
+  padding: 30px 50px;
+  height: 10vh;
+}
 body {
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.875rem;
-    opacity: 1;
-    overflow-y: scroll;
-    margin: 0;
+  background-color: #1e1e20;
+  font-family: "Inter", sans-serif;
+  color: #fff;
 }
-
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 300;
+}
 a {
-    cursor: pointer;
-    text-decoration: none;
-    font-family: 'Poppins', sans-serif;
-    
+  text-decoration: none;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 300;
+  margin: 0px 10px;
+}
+a:hover {
+  color: #535bf2;
+}
+p {
+  color: #9b9ba3;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.5;
+}
+label {
+  font-weight: 200;
+  font-size: 15px;
 }
 
-li {
-    list-style: none;
+/*CREACION DE LA TARJETA*/
+#tarjeta {
+  width: 520px;
+  height: 300px;
+  border: 4px solid #fff;
+  padding: 20px;
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
-
-h4 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.275rem;
-    color: var(--bs-emphasis-color);
+#img-tarjeta {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0.3;
 }
-
-/* Layout for admin dashboard skeleton */
-
-.wrapper{
-    align-items: stretch;
-    display: flex;
-    width: 100%;
+#codigo {
+  height: 25%;
 }
-
-#sidebar{
-    max-width: 264px;
-    min-width: 264px;
-    background: var(--bs-primary);
-    transition: all 0.35s ease-in-out;
+#contenido {
+  height: 60%;
 }
-
-.main{
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    min-width: 0;
-    overflow: hidden;
-    transition: all 0.35s ease-in-out;
-    width: 100%;
+#botones{
+  width: 250px;
+  height: 45px;
+  border: 1px solid #7777777e;
+  background: local;
+  border-radius: 17px;
+  color: #fff;
+  font-weight: 400;
+  margin: 10px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
-/* Sidebar Elements Style */
-
-.sidebar-logo{
-    padding: 1.15rem;
-}
-.sidebar-logo a {
-    color: #FFF;
-    font-size: 1.15rem;
-    font-weight: 600;
-}
-
-.sidebar-nav{
-    flex-grow: 1;
-    list-style: none;
-    margin-bottom: 0;
-    padding-left: 0;
-    margin-left: 0;
-
-}
-
-.sidebar-header{
-    color: #FFF;
-    font-size: 1.75rem;
-    padding: 1.5rem 1.5rem .375rem;
-    margin-bottom: .5rem;
-
-}
-
-a.sidebar-link{
-    padding: .625rem 1.625rem;
-    color: #FFF;
-    position: relative;
-    display: block;
-    font-size: 0.875rem;
-}
-
-.sidebar-item{
-    background-color: rgb(48, 80, 139);
-    margin-bottom: 1rem;
-    padding-top: 5px;
-    padding-bottom: 5px;
-
-}
-
-/* Sidebar Toggle */
-
-#sidebar.collapsed {
-    margin-left: -264px;
-}
-
-/* Footer and Nav */
-
-@media (max-width:767.98px) {}
-
-/* Theme Toggler */
-
-.theme-toggle {
-    position: fixed;
-    top: 50%;
-    transform: translateY(-65%);
-    text-align: center;
-    z-index: 10;
-    right: 0;
-    left: auto;
-    border: none;
-    background-color: var(--bs-body-color);
-}
-
-html[data-bs-theme="dark"] .theme-toggle .fa-sun,
-html[data-bs-theme="light"] .theme-toggle .fa-moon {
-    cursor: pointer;
-    padding: 10px;
-    display: block;
-    font-size: 1.25rem;
-    color: #FFF;
-}
-
-html[data-bs-theme="dark"] .theme-toggle .fa-moon {
-    display: none;
-}
-
-html[data-bs-theme="light"] .theme-toggle .fa-sun {
-    display: none;
-}
-
-/* Main */
-
-.avatar {
-    height: 100px;
-    width: 100px;
-}
-.navbar-expand .navbar-nav{
-    margin-left: auto;
-}
-
-.imagen{
-    height: 80%;
-    width: 80%;
-    margin: 10%;
-}
-.contenedorTarjeta{
-    margin-bottom: 20px;
-}
-
-.tarjeta{
-    background-color: rgb(48, 80, 139) ;
-}
-
-.subtarjeta{
-    padding: 50px;
-    
-}
-.centrar{
-    width: 100%;
-    text-align: center;
-}
-
-
-/* CSS LOGIN FINISH*/
-.login-box {
-    width: 320px;
-    height: 380px;
-    background: #294450;
-    color: #fff;
-    top: 50%;
-    left: 50%;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    box-sizing: border-box;
-    padding: 70px 30px;
-}
-
+#botones:hover{
+  color: #535bf2;
   
-.login-box .avatar {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    position: absolute;
-    top: -50px;
-    left: calc(50% - 50px);
 }
-  
-.login-box h1 {
-    margin: 0;
-    padding: 0 0 20px;
-    text-align: center;
-    font-size: 22px;
+.botones{
+  width: 200px;
+  height: 40px;
+  border: 1px solid #7777777e;
+  background: #252529;
+  border-radius: 10px;
+  color: #fff;
+  font-weight: 300;
+  margin: 10px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-  
-.login-box label {
-    margin: 0;
-    padding: 0;
-    font-weight: bold;
-    display: block;
+.botones:hover{
+  background-color: #535bf2;
+  color: #fff;
 }
-  
-.login-box input {
-    width: 100%;
-    margin-bottom: 10px;
-}
-  
-.login-box input[type="text"], .login-box input[type="password"] {
-    border: none;
-    border-bottom: 1px solid #fff;
-    background: transparent;
-    outline: none;
-    height: 30px;
-    color: #fff;
-    font-size: 16px;
-}
-  
-.login-box input[type="submit"] {
-    border: none;
-    outline: none;
-    height: 40px;
-    background: #25a2db;
-    color: #fff;
-    font-size: 18px;
-    border-radius: 20px;
-}
-  
-  .login-box input[type="submit"]:hover {
-    cursor: pointer;
-    background: #ffc107;
-    color: #000;
+
+@keyframes scale-in-center {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    opacity: 1;
   }
-  
-  .login-box a {
-    text-decoration: none;
-    font-size: 12px;
-    line-height: 20px;
-    color: darkgrey;
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
   }
-  
-  .login-box a:hover {
-    color: #fff;
-  }
-  .tarjeta-compra{
-    background-image: url('../image/cool-background.png');
-    background-size: cover;
-  }
+}

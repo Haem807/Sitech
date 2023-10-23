@@ -256,6 +256,6 @@ html[data-bs-theme="light"] .theme-toggle .fa-sun {
     color: #fff;
   }
   .tarjeta-compra{
-    background-image: url('../image/cool-background.png');
+    background-image: url('../img/cool-background.png');
     background-size: cover;
   }

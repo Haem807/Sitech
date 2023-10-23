@@ -1,0 +1,29 @@
+#input-login{
+  width: 320px;
+  height: 45px;
+  border: 1px solid #9b9ba357;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  background-color: #252529;
+  color: #9b9ba3;
+}
+
+#submit-login{
+  width: 320px;
+  height: 45px;
+  border: none;
+  border-radius: 10px;
+  background-color: #24292e;
+  color: #fff;
+}
+#submit-login:hover{
+  background-color: #555;
+}
+main{
+  height: 80vh;
+}
+h3{
+  font-weight: 600;
+  color: #646cff;
+}

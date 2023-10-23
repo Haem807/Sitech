@@ -20,8 +20,8 @@ import modeloDTO.UsuarioDTO;
 import modeloDTO.UsuarioTransportistaDTO;
 
 
-@WebServlet(name = "UsuarioServlet", urlPatterns = {"/UsuarioServlet"})
-public class UsuarioServlet extends HttpServlet {
+@WebServlet(name = "UsuarioPasajeroServlet", urlPatterns = {"/UsuarioPasajeroServlet"})
+public class UsuarioPasajeroServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -56,7 +56,7 @@ public class UsuarioServlet extends HttpServlet {
                     System.out.println("Llego el usuario: " + u.getNombre());
 
                     session.setAttribute("usuarioNuevo", u);                      //guardamos el usuario en la sesion
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("./assets/vistas/pasajero.jsp"); // Reemplaza "/miVista.jsp" con la ruta real de tu JSP.
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("./assets/vistas/ComprarTarjeta.jsp"); // Reemplaza "/miVista.jsp" con la ruta real de tu JSP.
                     dispatcher.forward(request, response);
                     //response.sendRedirect("./assets/vistas/pasajero.jsp");    //redireccionamos a la vista de compra de tarjeta
                 }

@@ -9,9 +9,9 @@ public class Tarjeta {
     private int id;
     private String codigo_tarjeta;
     private String numero_tarjeta;
-    private Date fecha_activacion;
-    private Date fecha_vencimiento;    
-    private Boolean estado;
+    private String fecha_activacion;
+    private String fecha_vencimiento;    
+    private int estado;
     private double saldo;
     private int idUsuario;
 
@@ -42,21 +42,7 @@ public class Tarjeta {
         this.numero_tarjeta = numero_tarjeta;
     }
 
-    public Date getFecha_activacion() {
-        return fecha_activacion;
-    }
-
-    public void setFecha_activacion(Date fecha_activacion) {
-        this.fecha_activacion = fecha_activacion;
-    }
-
-    public Boolean getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Boolean estado) {
-        this.estado = estado;
-    }
+    
 
     public double getSaldo() {
         return saldo;
@@ -74,13 +60,30 @@ public class Tarjeta {
         this.idUsuario = idUsuario;
     }
 
-    public Date getFecha_vencimiento() {
+    public String getFecha_activacion() {
+        return fecha_activacion;
+    }
+
+    public void setFecha_activacion(String fecha_activacion) {
+        this.fecha_activacion = fecha_activacion;
+    }
+
+    public String getFecha_vencimiento() {
         return fecha_vencimiento;
     }
 
-    public void setFecha_vencimiento(Date fecha_vencimiento) {
+    public void setFecha_vencimiento(String fecha_vencimiento) {
         this.fecha_vencimiento = fecha_vencimiento;
     }
+
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
+
     
     
 }

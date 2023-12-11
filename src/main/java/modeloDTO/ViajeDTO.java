@@ -18,10 +18,27 @@ public class ViajeDTO {
     private String placa;
     private String marca;
     private int id_transportista;
-
+    private String color;
+    private String nombre_ruta;
+    private String nombre_transportista;
+    private String hora_salida;
+    private String hora_retorno;
+    private int horario;
+    
+    
+    
     public ViajeDTO() {
     }
 
+    public int getHorario() {
+        return horario;
+    }
+
+    public void setHorario(int horario) {
+        this.horario = horario;
+    }
+
+    
     public int getIdViaje() {
         return idViaje;
     }
@@ -92,6 +109,46 @@ public class ViajeDTO {
 
     public void setId_transportista(int id_transportista) {
         this.id_transportista = id_transportista;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getNombre_ruta() {
+        return nombre_ruta;
+    }
+
+    public void setNombre_ruta(String nombre_ruta) {
+        this.nombre_ruta = nombre_ruta;
+    }
+
+    public String getNombre_transportista() {
+        return nombre_transportista;
+    }
+
+    public void setNombre_transportista(String nombre_transportista) {
+        this.nombre_transportista = nombre_transportista;
+    }
+
+    public String getHora_salida() {
+        return hora_salida;
+    }
+
+    public void setHora_salida(String hora_salida) {
+        this.hora_salida = hora_salida;
+    }
+
+    public String getHora_retorno() {
+        return hora_retorno;
+    }
+
+    public void setHora_retorno(String hora_retorno) {
+        this.hora_retorno = hora_retorno;
     }
     
 }

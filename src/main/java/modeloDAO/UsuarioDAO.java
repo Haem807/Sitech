@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 import modelo.Usuario;
 import modelo.Tarjeta;
+import modeloDTO.HorarioDTO;
+import modeloDTO.RutaDTO;
+import modeloDTO.UnidadTransporteDTO;
 import modeloDTO.UsuarioDTO;
 import modeloDTO.UsuarioTransportistaDTO;
 import modeloDTO.ViajeDTO;
@@ -75,7 +78,72 @@ public class UsuarioDAO {
     
     public List listarCompleto(){
         ArrayList<UsuarioDTO> list=new ArrayList();
-        String sql="SELECT * FROM `usuario` U INNER JOIN `persona` P ON P.id = U.idPersona";
+        String sql="SELECT * FROM `usuario` U INNER JOIN `persona` P ON P.id = U.idPersona where U.estado = 1 and U.id_rol = 3";
+        try{
+            conn=conexion.getConexion();
+            ps=conn.prepareStatement(sql);
+            rs=ps.executeQuery();
+            while(rs.next()){
+                UsuarioDTO u=new UsuarioDTO();
+                //Usuario
+                u.setIdUsuario(rs.getInt("U.id"));
+                u.setUsername(rs.getString("U.nombreUsuario"));
+                u.setContrasenia(rs.getString("U.contrasenia"));
+                u.setIdPersona(rs.getInt("U.idPersona"));
+                u.setId_rol(rs.getInt("U.id_rol"));
+                //Persona
+                u.setNombre(rs.getString("P.nombre"));
+                u.setApellido_paterno(rs.getString("P.apellidoPaterno"));
+                u.setApellido_materno(rs.getString("P.apellidoMaterno"));
+                u.setFechaNacimiento(rs.getString("P.fechaNacimiento"));
+                u.setDni(rs.getInt("P.dni"));
+                u.setCorreo(rs.getString("P.correo"));
+                list.add(u);
+            }
+        }catch(Exception e){
+            System.err.println(e.getMessage());
+        }
+        return list;
+    }
+    public List listarCompletoViaje(){
+        ArrayList<ViajeDTO> list=new ArrayList();
+        String sql="SELECT V.id, R.color, R.nombre_ruta, UT.placa, CONCAT(P.nombre,' ',P.apellidoPaterno,' ',P.apellidoMaterno) AS 'conductor', V.tarifa, H.hora_salida, H.hora_retorno FROM `unidad_transporte` UT INNER JOIN `viaje` V\n" +
+                    "ON UT.id = V.id_transporte\n" +
+                    "INNER JOIN `ruta` R \n" +
+                    "ON R.id = V.id_ruta\n" +
+                    "INNER JOIN `horario_viaje` HV\n" +
+                    "ON HV.id_viaje = V.id\n" +
+                    "INNER JOIN `horario` H \n" +
+                    "ON H.id = HV.id_horario\n" +
+                    "INNER JOIN `usuario` U\n" +
+                    "ON V.id_transportista = U.id\n" +
+                    "INNER JOIN `persona` P\n" +
+                    "ON P.id = U.idPersona where V.estado = 1";
+        try{
+            conn=conexion.getConexion();
+            ps=conn.prepareStatement(sql);
+            rs=ps.executeQuery();
+            while(rs.next()){
+                ViajeDTO u=new ViajeDTO();
+                //Usuario
+                u.setIdViaje(rs.getInt("V.id"));
+                u.setColor(rs.getString("R.color"));
+                u.setNombre_ruta(rs.getString("R.nombre_ruta"));
+                u.setPlaca(rs.getString("UT.placa"));
+                u.setNombre_transportista(rs.getString("conductor"));
+                u.setTarifa(rs.getDouble("V.tarifa"));
+                u.setHora_salida(rs.getString("H.hora_salida"));
+                u.setHora_retorno(rs.getString("H.hora_retorno"));
+                list.add(u);
+            }
+        }catch(Exception e){
+            System.err.println(e.getMessage());
+        }
+        return list;
+    }
+    public List listarCompletoReactivar(){
+        ArrayList<UsuarioDTO> list=new ArrayList();
+        String sql="SELECT * FROM `usuario` U INNER JOIN `persona` P ON P.id = U.idPersona where U.estado = 0 and U.id_rol = 3";
         try{
             conn=conexion.getConexion();
             ps=conn.prepareStatement(sql);
@@ -103,6 +171,180 @@ public class UsuarioDAO {
         return list;
     }
     
+    public List listarCompletoTransportistas(){
+        ArrayList<UsuarioDTO> list=new ArrayList();
+        String sql="SELECT * FROM `usuario` U INNER JOIN `persona` P ON P.id = U.idPersona where U.estado = 1 and U.id_rol = 2";
+        try{
+            conn=conexion.getConexion();
+            ps=conn.prepareStatement(sql);
+            rs=ps.executeQuery();
+            while(rs.next()){
+                UsuarioDTO u=new UsuarioDTO();
+                //Usuario
+                u.setIdUsuario(rs.getInt("U.id"));
+                u.setUsername(rs.getString("U.nombreUsuario"));
+                u.setContrasenia(rs.getString("U.contrasenia"));
+                u.setIdPersona(rs.getInt("U.idPersona"));
+                u.setId_rol(rs.getInt("U.id_rol"));
+                //Persona
+                u.setNombre(rs.getString("P.nombre"));
+                u.setApellido_paterno(rs.getString("P.apellidoPaterno"));
+                u.setApellido_materno(rs.getString("P.apellidoMaterno"));
+                u.setFechaNacimiento(rs.getString("P.fechaNacimiento"));
+                u.setDni(rs.getInt("P.dni"));
+                u.setCorreo(rs.getString("P.correo"));
+                list.add(u);
+            }
+        }catch(Exception e){
+            System.err.println(e.getMessage());
+        }
+        return list;
+    }
+    public List listarCompletoTransportistasReactivar(){
+        ArrayList<UsuarioDTO> list=new ArrayList();
+        String sql="SELECT * FROM `usuario` U INNER JOIN `persona` P ON P.id = U.idPersona where U.estado = 0 and U.id_rol = 2";
+        try{
+            conn=conexion.getConexion();
+            ps=conn.prepareStatement(sql);
+            rs=ps.executeQuery();
+            while(rs.next()){
+                UsuarioDTO u=new UsuarioDTO();
+                //Usuario
+                u.setIdUsuario(rs.getInt("U.id"));
+                u.setUsername(rs.getString("U.nombreUsuario"));
+                u.setContrasenia(rs.getString("U.contrasenia"));
+                u.setIdPersona(rs.getInt("U.idPersona"));
+                u.setId_rol(rs.getInt("U.id_rol"));
+                //Persona
+                u.setNombre(rs.getString("P.nombre"));
+                u.setApellido_paterno(rs.getString("P.apellidoPaterno"));
+                u.setApellido_materno(rs.getString("P.apellidoMaterno"));
+                u.setFechaNacimiento(rs.getString("P.fechaNacimiento"));
+                u.setDni(rs.getInt("P.dni"));
+                u.setCorreo(rs.getString("P.correo"));
+                list.add(u);
+            }
+        }catch(Exception e){
+            System.err.println(e.getMessage());
+        }
+        return list;
+    }
+    
+    public List listarCompletoUnidadTransportistas(){
+        ArrayList<UnidadTransporteDTO> list=new ArrayList();
+        String sql="SELECT * FROM `unidad_transporte` WHERE estado = 1";
+        try{
+            conn=conexion.getConexion();
+            ps=conn.prepareStatement(sql);
+            rs=ps.executeQuery();
+            while(rs.next()){
+                UnidadTransporteDTO u=new UnidadTransporteDTO();
+                //Usuario
+                u.setId(rs.getInt("id"));
+                u.setPlaca(rs.getString("placa"));
+                u.setMarca(rs.getString("marca"));
+                u.setModelo(rs.getString("modelo"));
+                u.setEstado(rs.getInt("estado"));
+                list.add(u);
+            }
+        }catch(Exception e){
+            System.err.println(e.getMessage());
+        }
+        return list;
+    }
+    public List listarCompletoRutas(){
+        ArrayList<RutaDTO> list=new ArrayList();
+        String sql="SELECT * FROM `ruta` WHERE estado = 1";
+        try{
+            conn=conexion.getConexion();
+            ps=conn.prepareStatement(sql);
+            rs=ps.executeQuery();
+            while(rs.next()){
+                RutaDTO u=new RutaDTO();
+                //Ruta
+                u.setId(rs.getInt("id"));
+                u.setColor(rs.getString("color"));
+                u.setNombre_ruta(rs.getString("nombre_ruta"));
+                u.setOrigen(rs.getString("origen"));
+                u.setDestino(rs.getString("destino"));
+                u.setEstado(rs.getInt("estado"));
+                u.setId_distrito(rs.getInt("id_distrito"));
+                list.add(u);
+            }
+        }catch(Exception e){
+            System.err.println(e.getMessage());
+        }
+        return list;
+    }
+    public List listarCompletoHorarios(){
+        ArrayList<HorarioDTO> list=new ArrayList();
+        String sql="SELECT * FROM `horario` WHERE estado <> 1";
+        try{
+            conn=conexion.getConexion();
+            ps=conn.prepareStatement(sql);
+            rs=ps.executeQuery();
+            while(rs.next()){
+                HorarioDTO u=new HorarioDTO();
+                //Ruta
+                u.setId(rs.getInt("id"));
+                u.setHora_salida(rs.getString("hora_salida"));
+                u.setHora_retorno(rs.getString("hora_retorno"));
+                u.setEstado(rs.getInt("estado"));
+                list.add(u);
+            }
+        }catch(Exception e){
+            System.err.println(e.getMessage());
+        }
+        return list;
+    }
+    
+    
+    public List listarCompletoUnidadTransportistasReactivar(){
+        ArrayList<UnidadTransporteDTO> list=new ArrayList();
+        String sql="SELECT * FROM `unidad_transporte` WHERE estado = 0";
+        try{
+            conn=conexion.getConexion();
+            ps=conn.prepareStatement(sql);
+            rs=ps.executeQuery();
+            while(rs.next()){
+                UnidadTransporteDTO u=new UnidadTransporteDTO();
+                //Usuario
+                u.setId(rs.getInt("id"));
+                u.setPlaca(rs.getString("placa"));
+                u.setMarca(rs.getString("marca"));
+                u.setModelo(rs.getString("modelo"));
+                u.setEstado(rs.getInt("estado"));
+                list.add(u);
+            }
+        }catch(Exception e){
+            System.err.println(e.getMessage());
+        }
+        return list;
+    }
+    public List listarCompletoRutasReactivar(){
+        ArrayList<RutaDTO> list=new ArrayList();
+        String sql="SELECT * FROM `ruta` WHERE estado = 0";
+        try{
+            conn=conexion.getConexion();
+            ps=conn.prepareStatement(sql);
+            rs=ps.executeQuery();
+            while(rs.next()){
+                RutaDTO u=new RutaDTO();
+                //Ruta
+                u.setId(rs.getInt("id"));
+                u.setColor(rs.getString("color"));
+                u.setNombre_ruta(rs.getString("nombre_ruta"));
+                u.setOrigen(rs.getString("origen"));
+                u.setDestino(rs.getString("destino"));
+                u.setEstado(rs.getInt("estado"));
+                u.setId_distrito(rs.getInt("id_distrito"));
+                list.add(u);
+            }
+        }catch(Exception e){
+            System.err.println(e.getMessage());
+        }
+        return list;
+    }
     
     public Usuario listarId(int id){
         
@@ -180,6 +422,52 @@ public class UsuarioDAO {
             System.err.println(e.getMessage());
         }
         return usutransportDTO;
+    }
+    //Listar unidad transporte
+    public UnidadTransporteDTO listarIdUnidadTranport(int idUni){
+        UnidadTransporteDTO u = new UnidadTransporteDTO();
+        String sql="SELECT * FROM `unidad_transporte` WHERE id="+idUni;
+        try{
+            conn=conexion.getConexion();
+            ps=conn.prepareStatement(sql);
+            rs=ps.executeQuery();
+            while(rs.next()){
+                
+                u.setId(rs.getInt("id"));
+                u.setPlaca(rs.getString("placa"));
+                u.setMarca(rs.getString("marca"));
+                u.setModelo(rs.getString("modelo"));
+                u.setEstado(rs.getInt("estado"));
+                
+            }
+        }catch(Exception e){
+            System.err.println(e.getMessage());
+        }
+        return u;
+    }
+    //Listar unidad transporte
+    public RutaDTO listarIdRuta(int idUni){
+        RutaDTO u = new RutaDTO();
+        String sql="SELECT * FROM `ruta` WHERE id="+idUni;
+        try{
+            conn=conexion.getConexion();
+            ps=conn.prepareStatement(sql);
+            rs=ps.executeQuery();
+            while(rs.next()){
+                
+                u.setId(rs.getInt("id"));
+                u.setColor(rs.getString("color"));
+                u.setNombre_ruta(rs.getString("nombre_ruta"));
+                u.setOrigen(rs.getString("origen"));
+                u.setDestino(rs.getString("destino"));
+                u.setEstado(rs.getInt("estado"));
+                u.setId_distrito(rs.getInt("id_distrito"));
+                
+            }
+        }catch(Exception e){
+            System.err.println(e.getMessage());
+        }
+        return u;
     }
     //Listar tarjetas
     public List listarTarjetas(int id){
@@ -285,7 +573,88 @@ public class UsuarioDAO {
     }
     //--ELIMINAR USUARIO
     public boolean eliminar(int id){
-        String sql = "DELETE FROM `usuario` WHERE id =" +id;
+        String sql = "UPDATE `usuario` SET `estado`= 0 WHERE id =" +id;
+        try{
+            conn = conexion.getConexion();
+            ps = conn.prepareStatement(sql);
+            ps.executeUpdate();
+        }catch(Exception e){}
+        return false;
+    }
+    //--ELIMINAR USUARIO
+    public boolean eliminarViaje(int id){
+        String sql = "UPDATE `viaje` SET `estado`= 0 WHERE id =" +id;
+        try{
+            conn = conexion.getConexion();
+            ps = conn.prepareStatement(sql);
+            ps.executeUpdate();
+        }catch(Exception e){}
+        return false;
+    }
+    //--REACTIVAR USUARIO
+    public boolean reactivar(int id){
+        String sql = "UPDATE `usuario` SET `estado`= 1 WHERE id =" +id;
+        try{
+            conn = conexion.getConexion();
+            ps = conn.prepareStatement(sql);
+            ps.executeUpdate();
+        }catch(Exception e){}
+        return false;
+    }
+    //--ELIMINAR UNIDAD TRANSPORTE
+    public boolean eliminarUnidadTransporte(int id){
+        String sql = "UPDATE `unidad_transporte` SET `estado`= 0 WHERE id =" +id;
+        try{
+            conn = conexion.getConexion();
+            ps = conn.prepareStatement(sql);
+            ps.executeUpdate();
+        }catch(Exception e){}
+        return false;
+    }
+    
+    //--ELIMINAR RUTA
+    public boolean eliminarRuta(int id){
+        String sql = "UPDATE `ruta` SET `estado`= 0 WHERE id =" +id;
+        try{
+            conn = conexion.getConexion();
+            ps = conn.prepareStatement(sql);
+            ps.executeUpdate();
+        }catch(Exception e){}
+        return false;
+    }
+    //--REACTIVAR UNIDAD TRANSPORTE
+    public boolean reactivarUnidadTransporte(int id){
+        String sql = "UPDATE `unidad_transporte` SET `estado`= 1 WHERE id =" +id;
+        try{
+            conn = conexion.getConexion();
+            ps = conn.prepareStatement(sql);
+            ps.executeUpdate();
+        }catch(Exception e){}
+        return false;
+    }
+    //--REACTIVAR UNIDAD TRANSPORTE
+    public boolean reactivarRuta(int id){
+        String sql = "UPDATE `ruta` SET `estado`= 1 WHERE id =" +id;
+        try{
+            conn = conexion.getConexion();
+            ps = conn.prepareStatement(sql);
+            ps.executeUpdate();
+        }catch(Exception e){}
+        return false;
+    }
+    //--MODIFICAR UNIDAD TRANSPORTE
+    public boolean editarUnidadTransporte(UnidadTransporteDTO uni){
+        String sql = "UPDATE `unidad_transporte` SET `placa`='"+uni.getPlaca()+"',`marca`='"+uni.getMarca()+"',`modelo`='"+uni.getModelo()+"' WHERE id ="+uni.getId();
+        try{
+            conn = conexion.getConexion();
+            ps = conn.prepareStatement(sql);
+            ps.executeUpdate();
+        }catch(Exception e){}
+        return false;
+    }
+    //--MODIFICAR RUTA
+    public boolean editarRuta(RutaDTO uni){
+        String sql = "UPDATE `ruta` SET `color`='"+uni.getColor()+"',`nombre_ruta`='"+uni.getNombre_ruta()+"',`origen`='"+uni.getOrigen()+"',`destino`='"+uni.getDestino()+"' WHERE id ="+uni.getId();
         try{
             conn = conexion.getConexion();
             ps = conn.prepareStatement(sql);
@@ -308,6 +677,150 @@ public class UsuarioDAO {
         
         return false;
     }
+    public boolean registrarUsuario(UsuarioDTO u) {
+        int usuarioID = -1; // Valor predeterminado en caso de error
+
+        try {
+            // Realiza la inserción en la tabla de usuarios
+            String insertUsuarioSQL = "INSERT INTO `persona`(`nombre`, `apellidoPaterno`, `apellidoMaterno`, `fechaNacimiento`, `dni`, `correo`) VALUES (?, ?, ?, ? ,?, ?)";
+            
+                conn = conexion.getConexion();
+                ps = conn.prepareStatement(insertUsuarioSQL, PreparedStatement.RETURN_GENERATED_KEYS);
+                ps.setString(1, u.getNombre());
+                ps.setString(2, u.getApellido_paterno());
+                ps.setString(3, u.getApellido_materno());
+                ps.setString(4, u.getFechaNacimiento());
+                ps.setInt(5, u.getDni());
+                ps.setString(6, u.getCorreo());
+                int affectedRows = ps.executeUpdate();
+
+                if (affectedRows == 0) {
+                    // La inserción falló
+                    return false;
+                }
+                rs = ps.getGeneratedKeys();
+                if (rs.next()) {
+                    usuarioID = rs.getInt(1);
+                } else {
+                    throw new SQLException("No se pudo obtener el ID generado.");
+                }
+                // Recupera el ID autoincrementable generado
+                
+
+            // Después de obtener el usuarioID, puedes insertar usuario
+            String insertDetallesSQL = "INSERT INTO `usuario`(`nombreUsuario`, `contrasenia`, `idPersona`, `id_rol`, `estado`) VALUES (?, ?, ?, ?, ?)";
+            try (PreparedStatement stmt = conn.prepareStatement(insertDetallesSQL)) {
+                stmt.setString(1, u.getUsername());
+                stmt.setString(2, u.getContrasenia());
+                stmt.setInt(3, usuarioID);
+                stmt.setInt(4, u.getId_rol());
+                stmt.setInt(5, 1);
+                stmt.executeUpdate();
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Manejo de excepciones
+        }
+
+        return true;
+    }
+    public boolean registrarUnidadTransporte(UnidadTransporteDTO u) {
+        
+
+        try {
+            conn = conexion.getConexion();
+            String insertDetallesSQL = "INSERT INTO `unidad_transporte`(`placa`, `marca`, `modelo`, `estado`) VALUES (?, ?, ?, ?)";
+            try (PreparedStatement stmt = conn.prepareStatement(insertDetallesSQL)) {
+                stmt.setString(1, u.getPlaca());
+                stmt.setString(2, u.getMarca());
+                stmt.setString(3, u.getModelo());
+                stmt.setInt(4, 1);
+                stmt.executeUpdate();
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Manejo de excepciones
+        }
+
+        return true;
+    }
+    public boolean registrarViaje(ViajeDTO u) {
+        int viajeID = -1; // Valor predeterminado en caso de error
+
+        try {
+            // Realiza la inserción en la tabla de usuarios
+            String insertUsuarioSQL = "INSERT INTO `viaje`(`fecha`, `hora`, `tarifa`, `reporte_viaje`, `id_ruta`, `id_transporte`, `id_transportista`) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            
+                conn = conexion.getConexion();
+                ps = conn.prepareStatement(insertUsuarioSQL, PreparedStatement.RETURN_GENERATED_KEYS);
+                ps.setString(1, "2023-12-03");
+                ps.setString(2, "02:33");
+                ps.setDouble(3, u.getTarifa());
+                ps.setString(4, "Reporte completo");
+                ps.setInt(5, u.getId_ruta());
+                ps.setInt(6, u.getId_transporte());
+                ps.setInt(7, u.getId_transportista());
+                int affectedRows = ps.executeUpdate();
+
+                if (affectedRows == 0) {
+                    // La inserción falló
+                    return false;
+                }
+                rs = ps.getGeneratedKeys();
+                if (rs.next()) {
+                    viajeID = rs.getInt(1);
+                } else {
+                    throw new SQLException("No se pudo obtener el ID generado.");
+                }
+                // Recupera el ID autoincrementable generado
+                
+
+            // Después de obtener el usuarioID, puedes insertar viaje.horario
+            String insertDetallesSQL = "INSERT INTO `horario_viaje`(`id_horario`, `id_viaje`, `hora_salida_registro`, `hora_retorno_registro`, `fecha_registro`) VALUES (?, ?, ?, ?, ?)";
+            try (PreparedStatement stmt = conn.prepareStatement(insertDetallesSQL)) {
+                stmt.setInt(1, u.getHorario());
+                stmt.setInt(2, viajeID);
+                stmt.setString(3, "18:10:29");
+                stmt.setString(4, "20:10:29");
+                stmt.setString(5, "2023-12-03");
+                stmt.executeUpdate();
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Manejo de excepciones
+        }
+
+        
+
+        return true;
+    }
+    public boolean registrarRuta(RutaDTO u) {
+        
+
+        try {
+            conn = conexion.getConexion();
+            String insertDetallesSQL = "INSERT INTO `ruta`(`color`, `nombre_ruta`, `origen`, `destino`, `estado`, `id_distrito`) VALUES (?, ?, ?, ?, ?, ?)";
+            try (PreparedStatement stmt = conn.prepareStatement(insertDetallesSQL)) {
+                stmt.setString(1, u.getColor());
+                stmt.setString(2, u.getNombre_ruta());
+                stmt.setString(3, u.getOrigen());
+                stmt.setString(4, u.getDestino());
+                stmt.setInt(5, 1);
+                stmt.setInt(6, u.getId_distrito());
+                stmt.executeUpdate();
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Manejo de excepciones
+        }
+
+        return true;
+    }
+    
     //buscar usuario por numero de tarjeta
     public int buscarUsuTarjeta(String numTarjeta){
         

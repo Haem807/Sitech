@@ -1,16 +1,33 @@
-C:\Users\haem8\Downloads\Nuevo Proyecto\maven_sit\src\main\java\modelo\Tarjeta.java
-C:\Users\haem8\Downloads\Nuevo Proyecto\maven_sit\src\main\java\modelo\Rol.java
-C:\Users\haem8\Downloads\Nuevo Proyecto\maven_sit\src\main\java\modelo\ViajeUsuario.java
-C:\Users\haem8\Downloads\Nuevo Proyecto\maven_sit\src\main\java\modeloDAO\UsuarioDAO.java
-C:\Users\haem8\Downloads\Nuevo Proyecto\maven_sit\src\main\java\modelo\Horario.java
-C:\Users\haem8\Downloads\Nuevo Proyecto\maven_sit\src\main\java\modelo\Viaje.java
-C:\Users\haem8\Downloads\Nuevo Proyecto\maven_sit\src\main\java\modelo\Persona.java
-C:\Users\haem8\Downloads\Nuevo Proyecto\maven_sit\src\main\java\modelo\UnidadTransporte.java
-C:\Users\haem8\Downloads\Nuevo Proyecto\maven_sit\src\main\java\modelo\Distrito.java
-C:\Users\haem8\Downloads\Nuevo Proyecto\maven_sit\src\main\java\config\Conexion.java
-C:\Users\haem8\Downloads\Nuevo Proyecto\maven_sit\src\main\java\controlador\UsuarioServlet.java
-C:\Users\haem8\Downloads\Nuevo Proyecto\maven_sit\src\main\java\modelo\HorarioViaje.java
-C:\Users\haem8\Downloads\Nuevo Proyecto\maven_sit\src\main\java\controlador\TarjetaServlet.java
-C:\Users\haem8\Downloads\Nuevo Proyecto\maven_sit\src\main\java\modelo\Ruta.java
-C:\Users\haem8\Downloads\Nuevo Proyecto\maven_sit\src\main\java\modelo\Usuario.java
-C:\Users\haem8\Downloads\Nuevo Proyecto\maven_sit\src\main\java\modeloDAO\TarjetaDAO.java
+D:\Universidad\Ing. de Sistemas\10 semestre\PROYECTO NOHELY\AVANCE ALEX\ULTIMO\SIT ULTIMO\maven_sit\src\main\java\controlador\RutaServlet.java
+D:\Universidad\Ing. de Sistemas\10 semestre\PROYECTO NOHELY\AVANCE ALEX\ULTIMO\SIT ULTIMO\maven_sit\src\main\java\modelo\Usuario.java
+D:\Universidad\Ing. de Sistemas\10 semestre\PROYECTO NOHELY\AVANCE ALEX\ULTIMO\SIT ULTIMO\maven_sit\src\main\java\modeloDTO\UsuarioTransportistaDTO.java
+D:\Universidad\Ing. de Sistemas\10 semestre\PROYECTO NOHELY\AVANCE ALEX\ULTIMO\SIT ULTIMO\maven_sit\src\main\java\controlador\RutaAgregarServlet.java
+D:\Universidad\Ing. de Sistemas\10 semestre\PROYECTO NOHELY\AVANCE ALEX\ULTIMO\SIT ULTIMO\maven_sit\src\main\java\modelo\Distrito.java
+D:\Universidad\Ing. de Sistemas\10 semestre\PROYECTO NOHELY\AVANCE ALEX\ULTIMO\SIT ULTIMO\maven_sit\src\main\java\modelo\Ruta.java
+D:\Universidad\Ing. de Sistemas\10 semestre\PROYECTO NOHELY\AVANCE ALEX\ULTIMO\SIT ULTIMO\maven_sit\src\main\java\modeloDTO\HorarioDTO.java
+D:\Universidad\Ing. de Sistemas\10 semestre\PROYECTO NOHELY\AVANCE ALEX\ULTIMO\SIT ULTIMO\maven_sit\src\main\java\controlador\UsuarioServlet.java
+D:\Universidad\Ing. de Sistemas\10 semestre\PROYECTO NOHELY\AVANCE ALEX\ULTIMO\SIT ULTIMO\maven_sit\src\main\java\modelo\Horario.java
+D:\Universidad\Ing. de Sistemas\10 semestre\PROYECTO NOHELY\AVANCE ALEX\ULTIMO\SIT ULTIMO\maven_sit\src\main\java\controlador\RecargarTarjetaServlet.java
+D:\Universidad\Ing. de Sistemas\10 semestre\PROYECTO NOHELY\AVANCE ALEX\ULTIMO\SIT ULTIMO\maven_sit\src\main\java\modelo\Viaje.java
+D:\Universidad\Ing. de Sistemas\10 semestre\PROYECTO NOHELY\AVANCE ALEX\ULTIMO\SIT ULTIMO\maven_sit\src\main\java\modeloDAO\TarjetaDAO.java
+D:\Universidad\Ing. de Sistemas\10 semestre\PROYECTO NOHELY\AVANCE ALEX\ULTIMO\SIT ULTIMO\maven_sit\src\main\java\controlador\UnidadTransporteServlet.java
+D:\Universidad\Ing. de Sistemas\10 semestre\PROYECTO NOHELY\AVANCE ALEX\ULTIMO\SIT ULTIMO\maven_sit\src\main\java\modelo\ViajeUsuario.java
+D:\Universidad\Ing. de Sistemas\10 semestre\PROYECTO NOHELY\AVANCE ALEX\ULTIMO\SIT ULTIMO\maven_sit\src\main\java\controlador\ControladorPrueba.java
+D:\Universidad\Ing. de Sistemas\10 semestre\PROYECTO NOHELY\AVANCE ALEX\ULTIMO\SIT ULTIMO\maven_sit\src\main\java\controlador\UsuarioAgregarServlet.java
+D:\Universidad\Ing. de Sistemas\10 semestre\PROYECTO NOHELY\AVANCE ALEX\ULTIMO\SIT ULTIMO\maven_sit\src\main\java\controlador\SeleccionarTarjetaServlet.java
+D:\Universidad\Ing. de Sistemas\10 semestre\PROYECTO NOHELY\AVANCE ALEX\ULTIMO\SIT ULTIMO\maven_sit\src\main\java\modelo\Rol.java
+D:\Universidad\Ing. de Sistemas\10 semestre\PROYECTO NOHELY\AVANCE ALEX\ULTIMO\SIT ULTIMO\maven_sit\src\main\java\modelo\UnidadTransporte.java
+D:\Universidad\Ing. de Sistemas\10 semestre\PROYECTO NOHELY\AVANCE ALEX\ULTIMO\SIT ULTIMO\maven_sit\src\main\java\controlador\TarjetaServlet.java
+D:\Universidad\Ing. de Sistemas\10 semestre\PROYECTO NOHELY\AVANCE ALEX\ULTIMO\SIT ULTIMO\maven_sit\src\main\java\modeloDTO\ViajeDTO.java
+D:\Universidad\Ing. de Sistemas\10 semestre\PROYECTO NOHELY\AVANCE ALEX\ULTIMO\SIT ULTIMO\maven_sit\src\main\java\modeloDTO\UnidadTransporteDTO.java
+D:\Universidad\Ing. de Sistemas\10 semestre\PROYECTO NOHELY\AVANCE ALEX\ULTIMO\SIT ULTIMO\maven_sit\src\main\java\modeloDAO\UsuarioDAO.java
+D:\Universidad\Ing. de Sistemas\10 semestre\PROYECTO NOHELY\AVANCE ALEX\ULTIMO\SIT ULTIMO\maven_sit\src\main\java\modelo\HorarioViaje.java
+D:\Universidad\Ing. de Sistemas\10 semestre\PROYECTO NOHELY\AVANCE ALEX\ULTIMO\SIT ULTIMO\maven_sit\src\main\java\controlador\CobrarServlet.java
+D:\Universidad\Ing. de Sistemas\10 semestre\PROYECTO NOHELY\AVANCE ALEX\ULTIMO\SIT ULTIMO\maven_sit\src\main\java\config\Conexion.java
+D:\Universidad\Ing. de Sistemas\10 semestre\PROYECTO NOHELY\AVANCE ALEX\ULTIMO\SIT ULTIMO\maven_sit\src\main\java\modelo\Tarjeta.java
+D:\Universidad\Ing. de Sistemas\10 semestre\PROYECTO NOHELY\AVANCE ALEX\ULTIMO\SIT ULTIMO\maven_sit\src\main\java\GenerarInformePDF.java
+D:\Universidad\Ing. de Sistemas\10 semestre\PROYECTO NOHELY\AVANCE ALEX\ULTIMO\SIT ULTIMO\maven_sit\src\main\java\modelo\Persona.java
+D:\Universidad\Ing. de Sistemas\10 semestre\PROYECTO NOHELY\AVANCE ALEX\ULTIMO\SIT ULTIMO\maven_sit\src\main\java\modeloDTO\RutaDTO.java
+D:\Universidad\Ing. de Sistemas\10 semestre\PROYECTO NOHELY\AVANCE ALEX\ULTIMO\SIT ULTIMO\maven_sit\src\main\java\controlador\UnidadTransporteAgregarServlet.java
+D:\Universidad\Ing. de Sistemas\10 semestre\PROYECTO NOHELY\AVANCE ALEX\ULTIMO\SIT ULTIMO\maven_sit\src\main\java\controlador\UsuarioPasajeroServlet.java
+D:\Universidad\Ing. de Sistemas\10 semestre\PROYECTO NOHELY\AVANCE ALEX\ULTIMO\SIT ULTIMO\maven_sit\src\main\java\modeloDTO\UsuarioDTO.java

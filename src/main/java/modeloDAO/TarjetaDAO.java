@@ -57,6 +57,8 @@ public class TarjetaDAO {
         return false;
     }
     
+    
+    
     public Tarjeta listarId(int id){
         
         String sql="SELECT * FROM `tarjeta` where id ="+id;
@@ -68,6 +70,8 @@ public class TarjetaDAO {
                 
                 tar.setId(rs.getInt("id"));
                 tar.setSaldo(rs.getDouble("saldo"));
+                tar.setNumero_tarjeta("numero_tarjeta");
+                tar.setFecha_activacion("fecha_activacion");
                 
                 
             }
@@ -103,5 +107,16 @@ public class TarjetaDAO {
         }catch(Exception e){}
         return false;
     }
-    
+    public boolean recargarNumeroTarjeta(double monto, String numero){
+        String sql = "UPDATE `tarjeta` SET `saldo`= saldo + "+monto+"  WHERE `numero_tarjeta`= '"+numero+"'";
+        System.out.println("LLEGAMOS  A RECARGA"+monto+numero);
+        try{
+            conn = conexion.getConexion();
+            ps = conn.prepareStatement(sql);
+            ps.executeUpdate();
+            System.out.println("SE RECARGO: "+ monto + numero);
+        }catch(Exception e){
+            e.printStackTrace();}
+        return false;
+    }
 }

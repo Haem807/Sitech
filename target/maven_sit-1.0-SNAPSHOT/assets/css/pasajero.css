@@ -1,0 +1,16 @@
+#cards{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr ;
+ 
+}
+#card{
+  padding: 20px;
+  background-color: #252529;
+  border-radius: 10px;
+  margin: 10px;
+  width: 350px;
+}
+h5{
+  font-weight: semibold;
+}

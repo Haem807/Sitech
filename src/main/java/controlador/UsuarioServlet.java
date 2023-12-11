@@ -51,7 +51,9 @@ public class UsuarioServlet extends HttpServlet {
                 if(user.getId_rol() == 3){
                     UsuarioDTO u = usuDao.listarId2(user.getId(), user.getId_persona());
                     u.setListaTarjetas((ArrayList<Tarjeta>) usuDao.listarTarjetas(user.getId()));
-                    u.getListaTarjetas().get(0);
+                    /*if(!u.getListaTarjetas().isEmpty())
+                        u.getListaTarjetas().get(0);
+                    */
                     HttpSession session = request.getSession();               //creamos una sesion
                     System.out.println("Llego el usuario: " + u.getNombre());
 
@@ -84,10 +86,20 @@ public class UsuarioServlet extends HttpServlet {
             dispatcher.forward(request, response);
             //response.sendRedirect("./assets/vistas/edit2.jsp");   
         }else if(accion.equalsIgnoreCase("eliminar")){
-            int id = Integer.parseInt(request.getParameter("id"));
-            usuario.setId(id);
+            int id = Integer.parseInt(request.getParameter("idUsu"));
+            
             usuDao.eliminar(id);
-            response.sendRedirect("./assets/vistas/listar2.jsp");
+            response.sendRedirect("./assets/vistas/administrar_usuario.jsp");
+        }else if(accion.equalsIgnoreCase("reactivar")){
+            int id = Integer.parseInt(request.getParameter("idUsu"));
+            int idrol = Integer.parseInt(request.getParameter("idRol"));
+            usuDao.reactivar(id);
+            if(idrol == 3)
+                response.sendRedirect("./assets/vistas/administrar_usuario.jsp");
+            else if(idrol == 2)
+                response.sendRedirect("./assets/vistas/administrar_transportistas.jsp");
+            else
+                response.sendRedirect("./assets/vistas/administrar_usuario.jsp");
         }
             else {
             // Credenciales incorrectas, muestra un mensaje de error

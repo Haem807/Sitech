@@ -21,6 +21,7 @@ public class UsuarioDTO {
     private String contrasenia;
     private int id_rol;
     private ArrayList<Tarjeta> listaTarjetas;
+    private Tarjeta tarjetaSeleccionada;
 
     public UsuarioDTO() {
     }
@@ -129,6 +130,14 @@ public class UsuarioDTO {
 
     public void setListaTarjetas(ArrayList<Tarjeta> listaTarjetas) {
         this.listaTarjetas = listaTarjetas;
+    }
+
+    public Tarjeta getTarjetaSeleccionada() {
+        return tarjetaSeleccionada;
+    }
+
+    public void setTarjetaSeleccionada(Tarjeta tarjetaSeleccionada) {
+        this.tarjetaSeleccionada = tarjetaSeleccionada;
     }
 
     

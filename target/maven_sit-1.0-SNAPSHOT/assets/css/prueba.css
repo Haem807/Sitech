@@ -1,0 +1,18 @@
+#miTabla {
+    background-color: rgb(28, 24, 87);
+    color: rgb(119, 23, 106);
+  }
+  
+  tbody{
+    color: #1e1e20;
+    background-color: #1e1e20!important;
+  }
+  
+  #miTabla th, #miTabla td {
+    border: 1px solid rgb(151, 21, 21);  /* Añade bordes blancos a las celdas */
+  }
+  
+  td{
+    color: white;
+    background-color: #1e1e20;
+  }

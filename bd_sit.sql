@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-12-2023 a las 13:56:48
--- Versión del servidor: 10.4.19-MariaDB
--- Versión de PHP: 8.0.6
+-- Tiempo de generación: 11-12-2023 a las 12:15:53
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `distrito` (
   `id` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `distrito`
@@ -79,7 +79,7 @@ CREATE TABLE `horario` (
   `hora_salida` time NOT NULL,
   `hora_retorno` time NOT NULL,
   `estado` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `horario`
@@ -165,7 +165,7 @@ CREATE TABLE `horario_viaje` (
   `hora_salida_registro` time NOT NULL,
   `hora_retorno_registro` time NOT NULL,
   `fecha_registro` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `horario_viaje`
@@ -173,7 +173,30 @@ CREATE TABLE `horario_viaje` (
 
 INSERT INTO `horario_viaje` (`id`, `id_horario`, `id_viaje`, `hora_salida_registro`, `hora_retorno_registro`, `fecha_registro`) VALUES
 (1, 1, 2, '18:10:29', '20:10:29', '2023-12-03'),
-(2, 39, 4, '18:10:29', '20:10:29', '2023-12-03');
+(2, 39, 4, '18:10:29', '20:10:29', '2023-12-03'),
+(3, 5, 5, '18:10:29', '20:10:29', '2023-12-03'),
+(4, 37, 6, '18:10:29', '20:10:29', '2023-12-03');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pago_transportistas`
+--
+
+CREATE TABLE `pago_transportistas` (
+  `id` int(11) NOT NULL,
+  `pago` double NOT NULL,
+  `fecha` date NOT NULL,
+  `idViaje` int(11) NOT NULL,
+  `estado` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `pago_transportistas`
+--
+
+INSERT INTO `pago_transportistas` (`id`, `pago`, `fecha`, `idViaje`, `estado`) VALUES
+(1, 80, '2023-12-10', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -189,23 +212,23 @@ CREATE TABLE `persona` (
   `fechaNacimiento` date NOT NULL,
   `dni` int(11) NOT NULL,
   `correo` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `persona`
 --
 
 INSERT INTO `persona` (`id`, `nombre`, `apellidoPaterno`, `apellidoMaterno`, `fechaNacimiento`, `dni`, `correo`) VALUES
-(1, 'Diego e', 'Quispe', 'Rodriguez', '2001-12-04', 78811186, 'edson123'),
-(2, 'Jose', 'Fernandez', 'Mendoza', '2023-10-10', 75894658, 'jose@'),
-(3, 'Alex', 'Cordova', 'Huaracha', '2023-10-17', 67964351, 'alex@gmail.com'),
-(7, 'Luis2', 'L1', 'L1', '2023-09-26', 30586181, 'luis123@gmail.com'),
+(1, 'Christian', 'Espinoza', 'Mayhuire', '2001-12-04', 78811186, 'christian@gmail.com'),
+(2, 'Jose', 'Fernandez', 'Mendoza', '2023-10-10', 75894658, 'jose@gmail.com'),
+(3, 'Anthony', 'Mendoza', 'Gutierrez', '2023-10-17', 67964351, 'Anthony@gmail.com'),
+(7, 'Luis', 'Quispe', 'Lopez', '2023-09-26', 30586181, 'luis123@gmail.com'),
 (9, 'paola', 'gara', 'medina', '2023-10-25', 548976312, 'paola@gmail.com'),
-(10, 'Prueba', 'Peruba', 'Prueba', '2023-11-09', 73011185, 'prueba1@gmail.com'),
-(11, 'Prueba2', 'Peruba2', 'p2', '2023-11-30', 73011185, 'prueba2@gmail.com'),
-(12, 'prueba', 'prueba', 'prueba', '2023-11-23', 30586181, 'prueba3@gmail.com'),
-(13, 'Juan Diego', 'Torres', 'Malaga', '1996-06-12', 73548965, 'Juan_T@gmail.com'),
-(14, 'Maria Juana', 'Peralez', 'Huaraz', '1998-01-14', 73045185, 'maria_t@gmail.com');
+(10, 'Laura', 'Mendoza', 'Carpio', '2023-11-09', 73011185, 'laura@gmail.com'),
+(11, 'Nohely', 'Halanocca', 'Ccahuata', '2023-11-30', 73011185, 'Nohely@gmail.com'),
+(12, 'Leydy', 'Aranibar', 'Chavez', '2023-11-23', 30586181, 'Leydy@gmail.com'),
+(13, 'Juan Diego', 'Torres', 'Malaga', '1996-06-12', 73548965, 'Juan@gmail.com'),
+(14, 'Maria Juana', 'Peralez', 'Huaraz', '1998-01-14', 73045185, 'maria@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -217,7 +240,7 @@ CREATE TABLE `rol` (
   `id` int(11) NOT NULL,
   `rol` varchar(50) NOT NULL,
   `descripcion` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `rol`
@@ -242,7 +265,7 @@ CREATE TABLE `ruta` (
   `destino` varchar(100) NOT NULL,
   `estado` tinyint(1) NOT NULL,
   `id_distrito` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `ruta`
@@ -267,16 +290,16 @@ CREATE TABLE `tarjeta` (
   `estado` tinyint(1) NOT NULL,
   `saldo` float NOT NULL,
   `id_usuario` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `tarjeta`
 --
 
 INSERT INTO `tarjeta` (`id`, `codigo_tarjeta`, `numero_tarjeta`, `fecha_activacion`, `fecha_vencimiento`, `estado`, `saldo`, `id_usuario`) VALUES
-(2, '1234', '123456789', '2023-10-08 02:36:40', '2023-10-08', 1, 97, 2),
+(2, '1234', '123456789', '2023-10-08 02:36:40', '2023-10-08', 1, 96, 2),
 (3, '4321', '987654321', '2023-10-21 20:21:12', '2023-10-11', 1, 45, 2),
-(4, '1234', '123123123', '2023-10-23 03:18:15', '2023-10-25', 1, 15, 3);
+(4, '1234', '123123123', '2023-10-23 03:18:15', '2023-10-25', 1, 6, 3);
 
 -- --------------------------------------------------------
 
@@ -290,18 +313,18 @@ CREATE TABLE `unidad_transporte` (
   `marca` varchar(50) NOT NULL,
   `modelo` varchar(100) NOT NULL,
   `estado` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `unidad_transporte`
 --
 
 INSERT INTO `unidad_transporte` (`id`, `placa`, `marca`, `modelo`, `estado`) VALUES
-(1, 'UVJ-459', 'Cotum2', 'Nuevito', 1),
-(2, 'CJD-758', 'Cotum', 'Nuevo', 1),
-(3, 'FTY-7851', 'Bus', 'Viejo', 1),
-(4, 'UVW-X6Z', 'Cotum', 'Rain', 1),
-(5, 'U2W-AAA', 'Cotum', 'Rain', 1);
+(1, 'UVJ-459', 'Hyundai', 'Coaster', 1),
+(2, 'CJD-758', 'Toyota', 'Coaster', 1),
+(3, 'FTY-7851', 'Hyundai', 'Coaster', 1),
+(4, 'UVW-X6Z', 'Mitsubishi', 'Coaster', 1),
+(5, 'U2W-AAA', 'Wolksvagen', 'Coaster', 1);
 
 -- --------------------------------------------------------
 
@@ -316,23 +339,23 @@ CREATE TABLE `usuario` (
   `idPersona` int(11) NOT NULL,
   `id_rol` int(11) NOT NULL,
   `estado` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
 INSERT INTO `usuario` (`id`, `nombreUsuario`, `contrasenia`, `idPersona`, `id_rol`, `estado`) VALUES
-(2, 'diego@gmail.com', '1234', 1, 3, 1),
+(2, 'christian@gmail.com', '1234', 1, 3, 1),
 (3, 'jose123@gmail.com', '123', 2, 3, 1),
-(7, 'alex_t@gmail.com', '1234', 3, 2, 1),
+(7, 'anthony@gmail.com', '1234', 3, 2, 1),
 (8, 'luis123@gmail.com', '123', 7, 3, 1),
 (10, 'paola@gmail.com', '1234', 9, 3, 1),
-(11, 'prueba1@gmail.com', '1234', 10, 2, 1),
-(12, 'prueba2@gmail.com', '1234', 11, 2, 1),
-(13, 'prueba3@gmail.com', '1234', 12, 3, 1),
-(14, 'Juan_T@gmail.com', '1234', 13, 2, 1),
-(15, 'maria_t@gmail.com', '1234', 14, 2, 1);
+(11, 'laura@gmail.com', '1234', 10, 2, 1),
+(12, 'Nohely@gmail.com', '1234', 11, 2, 1),
+(13, 'Leydy@gmail.com', '1234', 12, 3, 1),
+(14, 'Juan@gmail.com', '1234', 13, 2, 1),
+(15, 'maria@gmail.com', '1234', 14, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -349,16 +372,19 @@ CREATE TABLE `viaje` (
   `id_ruta` int(11) NOT NULL,
   `id_transporte` int(11) NOT NULL,
   `id_transportista` int(11) NOT NULL,
+  `pago` varchar(2) NOT NULL,
   `estado` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `viaje`
 --
 
-INSERT INTO `viaje` (`id`, `fecha`, `hora`, `tarifa`, `reporte_viaje`, `id_ruta`, `id_transporte`, `id_transportista`, `estado`) VALUES
-(2, '2023-12-03', '17:02:33', 1.5, 'Reporte completo', 3, 1, 7, 1),
-(4, '2023-12-03', '02:33:00', 1, 'Reporte completo', 3, 1, 7, 1);
+INSERT INTO `viaje` (`id`, `fecha`, `hora`, `tarifa`, `reporte_viaje`, `id_ruta`, `id_transporte`, `id_transportista`, `pago`, `estado`) VALUES
+(2, '2023-12-03', '17:02:33', 1, 'Reporte completo', 3, 1, 7, 'Si', 1),
+(4, '2023-12-03', '02:33:00', 1.5, 'Reporte completo', 3, 1, 7, 'No', 1),
+(5, '2023-12-03', '02:33:00', 1.5, 'Reporte completo', 4, 5, 15, 'No', 1),
+(6, '2023-12-03', '02:33:00', 1.5, 'Reporte completo', 4, 5, 15, 'No', 1);
 
 -- --------------------------------------------------------
 
@@ -374,7 +400,16 @@ CREATE TABLE `viaje_usuario` (
   `hora_registro` time NOT NULL,
   `monto_cobrado` float NOT NULL,
   `numero_tarjeta` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `viaje_usuario`
+--
+
+INSERT INTO `viaje_usuario` (`id`, `id_usuario`, `id_viaje`, `fecha_registro`, `hora_registro`, `monto_cobrado`, `numero_tarjeta`) VALUES
+(1, 3, 5, '2023-12-10', '01:37:51', 1.5, '123123123'),
+(2, 3, 5, '2023-12-10', '01:38:27', 1.5, '123123123'),
+(3, 2, 4, '2023-12-10', '19:58:31', 1, '123456789');
 
 --
 -- Índices para tablas volcadas
@@ -399,6 +434,13 @@ ALTER TABLE `horario_viaje`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_horario` (`id_horario`),
   ADD KEY `id_viaje` (`id_viaje`);
+
+--
+-- Indices de la tabla `pago_transportistas`
+--
+ALTER TABLE `pago_transportistas`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idUsu` (`idViaje`);
 
 --
 -- Indices de la tabla `persona`
@@ -476,7 +518,13 @@ ALTER TABLE `horario`
 -- AUTO_INCREMENT de la tabla `horario_viaje`
 --
 ALTER TABLE `horario_viaje`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `pago_transportistas`
+--
+ALTER TABLE `pago_transportistas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `persona`
@@ -518,13 +566,13 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `viaje`
 --
 ALTER TABLE `viaje`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `viaje_usuario`
 --
 ALTER TABLE `viaje_usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas

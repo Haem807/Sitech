@@ -10,14 +10,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image.png" href="../img/buss.png">
+  <link rel="icon" type="image.png" href="${pageContext.request.contextPath}/assets/img/buss.png ">
   <title>Sistema integrado de Transporte - Devlex</title>
   <!--CSS-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
-  <link rel="stylesheet" href="../css/style.css">
-  <link rel="stylesheet" href="../css/administrar.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/administrar.css">
   <!--font awesome con CDN-->  
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">  
 
@@ -30,7 +30,8 @@
       <img src="../img/buss.png" alt="logo buss" width="60">
     </div>
     <nav class="d-flex align-items-center">
-      <a href="../../index.html">Inicio</a>
+      <a href="${pageContext.request.contextPath}/index.html">Inicio</a>
+      <a href="${pageContext.request.contextPath}/assets/vistas/reportes.jsp">Reportes</a>
       <a href="administrar_viajes.jsp">PROGRAMAR RUTAS</a>
     </nav>
   </header>
@@ -88,7 +89,7 @@
             <td style="background-color:#1e1e20;"><%= uni.getDestino()%></td>
             
             <td style="background-color:#1e1e20;"><a href="../../RutaServlet?accion=editar&idUni=<%=uni.getId()%>">Editar</a></td>
-            <td style="background-color:#1e1e20;"><a href="../../RutaServlet?accion=eliminar&idUni=<%=uni.getId()%>">Eliminar</a></td>
+            <td style="background-color:#1e1e20;"><a href="#" onclick="confirmarEliminacion(<%=uni.getId()%>)">Eliminar</a></td>
           </tr>
           <%}%>
         </tbody>
@@ -101,7 +102,6 @@
       <button type="button" class="botones" id="botonReactivar">Reactivar</button>
       
     </section>
-      <button type="button" class="botones" id="botonProgramar">PROGRAMAR RUTA</button>
 
       
       
@@ -127,6 +127,16 @@
             // Redirigir a otra página HTML
             window.location.href = 'reactivar_Rutas.jsp';
         });
+        
+        function confirmarEliminacion(idViaje) {
+            // Muestra una alerta de confirmación
+            if (confirm('¿Estás seguro de que deseas eliminar este dato?')) {
+                // Si el usuario hace clic en "Aceptar", redirige al servlet con la acción de eliminar
+                window.location.href = '../../RutaServlet?accion=eliminar&idUni=' + idViaje;
+            } else {
+                // Si el usuario hace clic en "Cancelar", no hace nada
+            }
+        }
     </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -140,15 +150,15 @@
     <script src="bootstrap/js/bootstrap.min.js"></script>
       
 <!-- datatables JS -->
-    <script type="text/javascript" src="../datatables/datatables.min.js"></script>  
+    <script type="text/javascript" src="${pageContext.request.contextPath}/assets/datatables/datatables.min.js"></script>  
 
 <!-- para usar botones en datatables JS -->  
-    <script src="../datatables/Buttons-1.5.6/js/dataTables.buttons.min.js"></script>  
-    <script src="../datatables/JSZip-2.5.0/jszip.min.js"></script>    
-    <script src="../datatables/pdfmake-0.1.36/pdfmake.min.js"></script>    
-    <script src="../datatables/pdfmake-0.1.36/vfs_fonts.js"></script>
-    <script src="../datatables/Buttons-1.5.6/js/buttons.html5.min.js"></script>
-    <script src="main_tablas.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/datatables/Buttons-1.5.6/js/dataTables.buttons.min.js"></script>  
+    <script src="${pageContext.request.contextPath}/assets/datatables/JSZip-2.5.0/jszip.min.js"></script>    
+    <script src="${pageContext.request.contextPath}/assets/datatables/pdfmake-0.1.36/pdfmake.min.js"></script>    
+    <script src="${pageContext.request.contextPath}/assets/datatables/pdfmake-0.1.36/vfs_fonts.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/datatables/Buttons-1.5.6/js/buttons.html5.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/vistas/main_tablas.js"></script>
   </main>
 </body>
 

@@ -38,15 +38,15 @@
                 
             <div class="d-flex flex-column  mt-3 mx-3">
             <label>PLACA</label>
-            <input class="" id="input-login" type="text" placeholder="Placa" name="placa" value="">
+            <input class="" id="input-login" type="text" placeholder="Placa" name="placa" value="" required>
           </div>
           <div class="d-flex flex-column mt-3 mx-3" >
             <label>MARCA</label>
-            <input class="" id="input-login" type="text" placeholder="marca" name="marca" value="">
+            <input class="" id="input-login" type="text" placeholder="marca" name="marca" value="" required>
           </div>
           <div class="d-flex flex-column mt-3 mx-3">
             <label>MODELO</label>
-            <input class="" id="input-login" type="text" placeholder="modelo" name="modelo" value="">
+            <input class="" id="input-login" type="text" placeholder="modelo" name="modelo" value="" required>
           </div>
             
           

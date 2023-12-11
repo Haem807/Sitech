@@ -6,6 +6,9 @@ package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import modelo.ViajeUsuario;
 import modeloDAO.TarjetaDAO;
 import modeloDAO.UsuarioDAO;
+import modeloDTO.ViajeUsuarioDTO;
 
 /**
  *
@@ -75,15 +79,26 @@ public class CobrarServlet extends HttpServlet {
         String numero_tarjeta = request.getParameter("numTarjeta");
         int usuario = usuDao.buscarUsuTarjeta(numero_tarjeta);
         double tarifa = Double.parseDouble(request.getParameter("tarifa"));
-        ViajeUsuario viaje = new ViajeUsuario();
-        
-        viaje.setFecha_registro("12-12-2023");
-        viaje.setHora_registro("00:00:00");
+        ViajeUsuarioDTO viaje = new ViajeUsuarioDTO();
+        // Obtener la fecha actual
+        LocalDateTime fechaYHoraActual = LocalDateTime.now();
+
+        // Crear un formateador para el formato DD-MM-AAAA
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter formatoHora = DateTimeFormatter.ofPattern("HH:mm:ss");
+
+        // Formatear la fecha actual según el formato deseado
+        String fechaFormateada = fechaYHoraActual.format(formatter);
+        String horaFormateada = fechaYHoraActual.format(formatoHora);
+        System.out.println("Fecha: "+ fechaFormateada + " Hora: "+horaFormateada);
+        viaje.setFecha_registro(fechaFormateada);
+        viaje.setHora_registro(horaFormateada);
         viaje.setId_usuario(usuario);
         viaje.setId_viaje(idViaje);
         viaje.setMonto_cobrado(tarifa);
         viaje.setTarjeta(numero_tarjeta);
         tarDao.descuentoTarjeta(viaje);
+        tarDao.registroViajeUsuario(viaje);
         RequestDispatcher dispatcher = request.getRequestDispatcher("./assets/vistas/cobrar.jsp");
         dispatcher.forward(request, response);
         //response.sendRedirect("./assets/vistas/cobrar.jsp");

@@ -13,7 +13,7 @@ public class GenerarInformePDF {
     public static void main(String[] args) {
         try {
             // Cargar el archivo JRXML y compilarlo en un objeto JasperReport
-            JasperReport jasperReport = JasperCompileManager.compileReport("ruta/al/informe.jrxml");
+            JasperReport jasperReport = JasperCompileManager.compileReport("informe.jrxml");
 
             // Crear un objeto Map con los parámetros del informe (si los hay)
             Map<String, Object> parametros = new HashMap<>();
@@ -22,7 +22,7 @@ public class GenerarInformePDF {
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parametros, new JREmptyDataSource());
 
             // Exportar el informe a formato PDF
-            JasperExportManager.exportReportToPdfFile(jasperPrint, "ruta/de/salida/informe.pdf");
+            JasperExportManager.exportReportToPdfFile(jasperPrint, "informe.pdf");
 
             System.out.println("Informe generado exitosamente en formato PDF.");
 

@@ -46,6 +46,11 @@ $(document).ready(function() {
             // Añadir estilos personalizados a los números en lengthMenu
             $('.dataTables_length select').css('color', 'white');
             $('.dataTables_length select').css('background-color', 'black');
+            // Añadir estilos personalizados al mensaje de zeroRecords
+            $('.dataTables_empty').css({
+                'background-color': 'black',
+                'color': 'white'
+            });
         }
     });     
 });

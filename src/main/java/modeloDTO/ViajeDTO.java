@@ -24,10 +24,74 @@ public class ViajeDTO {
     private String hora_salida;
     private String hora_retorno;
     private int horario;
-    
+    private int idHorarioViaje;
+    private String fecha_registro;
+    private String hora_registro;
+    private String persona;
+    private String tarjeta;
+    private int cantidad;
+    private String pago;
     
     
     public ViajeDTO() {
+    }
+
+    public String getPago() {
+        return pago;
+    }
+
+    public void setPago(String pago) {
+        this.pago = pago;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public String getFecha_registro() {
+        return fecha_registro;
+    }
+
+    public void setFecha_registro(String fecha_registro) {
+        this.fecha_registro = fecha_registro;
+    }
+
+    public String getHora_registro() {
+        return hora_registro;
+    }
+
+    public void setHora_registro(String hora_registro) {
+        this.hora_registro = hora_registro;
+    }
+
+    public String getPersona() {
+        return persona;
+    }
+
+    public void setPersona(String persona) {
+        this.persona = persona;
+    }
+
+    public String getTarjeta() {
+        return tarjeta;
+    }
+
+    public void setTarjeta(String tarjeta) {
+        this.tarjeta = tarjeta;
+    }
+
+    
+    
+    public int getIdHorarioViaje() {
+        return idHorarioViaje;
+    }
+
+    public void setIdHorarioViaje(int idHorarioViaje) {
+        this.idHorarioViaje = idHorarioViaje;
     }
 
     public int getHorario() {

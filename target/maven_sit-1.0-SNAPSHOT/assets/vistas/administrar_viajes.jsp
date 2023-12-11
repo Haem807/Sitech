@@ -22,19 +22,19 @@
   
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
 
-  <link rel="stylesheet" href="../css/style.css">
-  <link rel="stylesheet" href="../css/administrar.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/administrar.css">
 </head>
 
 <body>
   <!--Cabezera-->
   <header class="d-flex justify-content-between" id="header">
     <div class="d-flex align-items-center">
-      <img src="../img/buss.png" alt="logo buss" width="60">
+      <img src="${pageContext.request.contextPath}/assets/img/buss.png" alt="logo buss" width="60">
     </div>
     <nav class="d-flex align-items-center">
-      <a href="../../index.html">Inicio</a>
-      <a href="#">Registro</a>
+      <a href="${pageContext.request.contextPath}/index.html">Inicio</a>
+      <a href="${pageContext.request.contextPath}/assets/vistas/reportes.jsp">Reportes</a>
     </nav>
   </header>
 
@@ -46,16 +46,16 @@
       <h3>ADMINISTRACION DE VIAJES</h3>
     </div>
     <section class="my-4 d-flex">
-      <a href="./administrar_usuario.jsp" class="sidebar-link">
+      <a href="${pageContext.request.contextPath}/assets/vistas/administrar_usuario.jsp" class="sidebar-link">
         Usuarios
       </a>
-      <a href="./administrar_transportistas.jsp" class="sidebar-link">
+      <a href="${pageContext.request.contextPath}/assets/vistas/administrar_transportistas.jsp" class="sidebar-link">
         Conductores
       </a>
-        <a href="./administrar_unidad_transportes.jsp" class="sidebar-link">
+        <a href="${pageContext.request.contextPath}/assets/vistas/administrar_unidad_transportes.jsp" class="sidebar-link">
         Unidades
       </a>
-      <a href="./administrar_rutas.jsp" class="sidebar-link">
+      <a href="${pageContext.request.contextPath}/assets/vistas/administrar_rutas.jsp" class="sidebar-link">
         Rutas
       </a>
       
@@ -72,6 +72,8 @@
                 <th scope="col">Tarifa</th>
                 <th scope="col">Hora salida</th>
                 <th scope="col">Hora Retorno</th>
+                <th scope="col">Pago</th>
+                <th scope="col"></th>
                 <th scope="col"></th>
                 <th scope="col"></th>
               </tr>
@@ -95,8 +97,13 @@
                 <td style="background-color:#1e1e20;"><%= usu.getTarifa()%></td>
                 <td style="background-color:#1e1e20;"><%= usu.getHora_salida()%></td>
                 <td style="background-color:#1e1e20;"><%= usu.getHora_retorno()%></td>
-                <td style="background-color:#1e1e20;"><a href="../../ViajeServlet?accion=editar&idViaje=<%= usu.getIdViaje()%>">Editar</a></td>
-            <td style="background-color:#1e1e20;"><a href="../../ViajeServlet?accion=eliminar&idViaje=<%= usu.getIdViaje()%>">Eliminar</a></td>
+                <td style="background-color:#1e1e20;"><%= usu.getPago()%></td>
+                <td style="background-color:#1e1e20;"><a href="${pageContext.request.contextPath}/ViajeServlet?accion=pagar&idViaje=<%= usu.getIdViaje()%>">Pagar</a></td>
+                <td style="background-color:#1e1e20;"><a href="${pageContext.request.contextPath}/ViajeServlet?accion=editar&idViaje=<%= usu.getIdViaje()%>">Editar</a></td>
+            <td style="background-color:#1e1e20;">
+                <a href="#" onclick="confirmarEliminacionViaje(<%= usu.getIdViaje()%>)">Eliminar</a>
+            </td>
+
 
                 
               </tr>
@@ -127,8 +134,20 @@
         // Agregar un controlador de eventos de clic al botï¿½n
         boton2.addEventListener('click', function() {
             // Redirigir a otra pï¿½gina HTML
-            window.location.href = 'reactivar_Usuario.jsp';
+            window.location.href = 'reactivar_viajes.jsp';
         });
+        
+        
+        
+        function confirmarEliminacionViaje(idViaje) {
+            // Muestra una alerta de confirmación
+            if (confirm('¿Estás seguro de que deseas eliminar este dato?')) {
+                // Si el usuario hace clic en "Aceptar", redirige al servlet con la acción de eliminar
+                window.location.href = '${pageContext.request.contextPath}/ViajeServlet?accion=eliminar&idViaje=' + idViaje;
+            } else {
+                // Si el usuario hace clic en "Cancelar", no hace nada
+            }
+        }
     </script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -143,15 +162,15 @@
     <script src="bootstrap/js/bootstrap.min.js"></script>
       
 <!-- datatables JS -->
-    <script type="text/javascript" src="../datatables/datatables.min.js"></script>  
+    <script type="text/javascript" src="${pageContext.request.contextPath}/assets/datatables/datatables.min.js"></script>  
 
 <!-- para usar botones en datatables JS -->  
-    <script src="../datatables/Buttons-1.5.6/js/dataTables.buttons.min.js"></script>  
-    <script src="../datatables/JSZip-2.5.0/jszip.min.js"></script>    
-    <script src="../datatables/pdfmake-0.1.36/pdfmake.min.js"></script>    
-    <script src="../datatables/pdfmake-0.1.36/vfs_fonts.js"></script>
-    <script src="../datatables/Buttons-1.5.6/js/buttons.html5.min.js"></script>
-    <script src="main_tablas.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/datatables/Buttons-1.5.6/js/dataTables.buttons.min.js"></script>  
+    <script src="${pageContext.request.contextPath}/assets/datatables/JSZip-2.5.0/jszip.min.js"></script>    
+    <script src="${pageContext.request.contextPath}/assets/datatables/pdfmake-0.1.36/pdfmake.min.js"></script>    
+    <script src="${pageContext.request.contextPath}/assets/datatables/pdfmake-0.1.36/vfs_fonts.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/datatables/Buttons-1.5.6/js/buttons.html5.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/vistas/main_tablas.js"></script>
   </main>
 </body>
 

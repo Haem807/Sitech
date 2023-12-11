@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import modelo.*;
 import modeloDTO.ViajeDTO;
+import modeloDTO.ViajeUsuarioDTO;
 
 public class TarjetaDAO {
     
@@ -81,7 +82,7 @@ public class TarjetaDAO {
         return tar;
     }
     
-    //--AGREGAR Transaccion
+    /*--AGREGAR Transaccion
     public boolean registroViaje(ViajeDTO viaje){
   
         String sql = "INSERT INTO `viaje_usuario`( `id_usuario`, `id_viaje`, `fecha_registro`, `hora_registro`, `monto_cobrado`, `numero_tarjeta`) VALUES ('[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]')";
@@ -95,9 +96,10 @@ public class TarjetaDAO {
         }
         
         return false;
-    }
+    }*/
+    
     //--Realizar Transaccion
-    public boolean descuentoTarjeta(ViajeUsuario viaje){
+    public boolean descuentoTarjeta(ViajeUsuarioDTO viaje){
         
         String sql = "UPDATE `tarjeta` SET `saldo`= saldo - "+ viaje.getMonto_cobrado()+" WHERE `numero_tarjeta`='"+viaje.getTarjeta()+"'";
         try{
@@ -107,6 +109,23 @@ public class TarjetaDAO {
         }catch(Exception e){}
         return false;
     }
+    //--AGREGAR VIAJE-USUARIO
+    public boolean registroViajeUsuario(ViajeUsuarioDTO viaje){
+  
+        String sql = "INSERT INTO `viaje_usuario`( `id_usuario`, `id_viaje`, `fecha_registro`, `hora_registro`, `monto_cobrado`, `numero_tarjeta`) VALUES ("+viaje.getId_usuario()+","+viaje.getId_viaje()+",'"+viaje.getFecha_registro()+"','"+viaje.getHora_registro()+"',"+viaje.getMonto_cobrado()+",'"+viaje.getTarjeta()+"')";
+        
+        try{
+            conn = conexion.getConexion();
+            ps = conn.prepareCall(sql);
+            ps.executeUpdate();
+        }catch(SQLException e){
+            System.out.println(e);
+        }
+        
+        return false;
+    }
+    
+    
     public boolean recargarNumeroTarjeta(double monto, String numero){
         String sql = "UPDATE `tarjeta` SET `saldo`= saldo + "+monto+"  WHERE `numero_tarjeta`= '"+numero+"'";
         System.out.println("LLEGAMOS  A RECARGA"+monto+numero);

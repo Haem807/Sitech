@@ -15,8 +15,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
-  <link rel="stylesheet" href="../css/style.css">
-  <link rel="stylesheet" href="../css/administrar.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/administrar.css">
   <!--font awesome con CDN-->  
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">  
 </head>
@@ -29,7 +29,7 @@
     </div>
     <nav class="d-flex align-items-center">
       <a href="../../index.html">Inicio</a>
-      <a href="#">Registro</a>
+      <a href="./reportes.jsp">Reportes</a>
     </nav>
   </header>
 
@@ -96,7 +96,9 @@
             <td style="background-color:#1e1e20;"><%= usu.getCorreo()%></td>
             
             <td style="background-color:#1e1e20;"><a href="../../UsuarioServlet?accion=editar&idUsu=<%= usu.getIdUsuario()%>&idPer=<%= usu.getIdPersona()%>">Editar</a></td>
-            <td style="background-color:#1e1e20;"><a href="../../UsuarioServlet?accion=eliminar&idUsu=<%= usu.getIdUsuario()%>&idPer=<%= usu.getIdPersona()%>">Eliminar</a></td>
+            <td style="background-color:#1e1e20;">
+                <a href="#" onclick="confirmarEliminacionUsuario(<%= usu.getIdUsuario()%>, <%= usu.getIdPersona()%>)">Eliminar</a>
+            </td>
           </tr>
           <%}%>
         </tbody>
@@ -127,6 +129,16 @@
             // Redirigir a otra pï¿½gina HTML
             window.location.href = 'reactivar_Transportistas.jsp';
         });
+        
+        function confirmarEliminacionUsuario(idUsuario, idPersona) {
+    // Muestra una alerta de confirmación
+    if (confirm('¿Estás seguro de que deseas eliminar este dato?')) {
+        // Si el usuario hace clic en "Aceptar", redirige al servlet con la acción de eliminar
+        window.location.href = '../../UsuarioServlet?accion=eliminar&idUsu=' + idUsuario + '&idPer=' + idPersona;
+    } else {
+        // Si el usuario hace clic en "Cancelar", no hace nada
+    }
+}
     </script>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

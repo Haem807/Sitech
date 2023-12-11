@@ -20,8 +20,8 @@
   
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
 
-  <link rel="stylesheet" href="../css/style.css">
-  <link rel="stylesheet" href="../css/administrar.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/administrar.css">
 </head>
 
 <body>
@@ -32,7 +32,7 @@
     </div>
     <nav class="d-flex align-items-center">
       <a href="../../index.html">Inicio</a>
-      <a href="#">Registro</a>
+      <a href="./reportes.jsp">Reportes</a>
     </nav>
   </header>
 
@@ -99,7 +99,9 @@
                 <td style="background-color:#1e1e20;"><%= usu.getDni()%></td>
                 <td style="background-color:#1e1e20;"><%= usu.getCorreo()%></td>
                 <td style="background-color:#1e1e20;"><a href="../../UsuarioServlet?accion=editar&idUsu=<%= usu.getIdUsuario()%>&idPer=<%= usu.getIdPersona()%>">Editar</a></td>
-                <td style="background-color:#1e1e20;"><a href="../../UsuarioServlet?accion=eliminar&idUsu=<%= usu.getIdUsuario()%>&idPer=<%= usu.getIdPersona()%>">Eliminar</a></td>
+                <td style="background-color:#1e1e20;">
+                    <a href="#" onclick="confirmarEliminacionUsuario(<%= usu.getIdUsuario()%>, <%= usu.getIdPersona()%>)">Eliminar</a>
+                </td>
 
                 
               </tr>
@@ -132,6 +134,18 @@
             // Redirigir a otra pï¿½gina HTML
             window.location.href = 'reactivar_Usuario.jsp';
         });
+        
+        
+        function confirmarEliminacionUsuario(idUsuario, idPersona) {
+            // Muestra una alerta de confirmación
+            if (confirm('¿Estás seguro de que deseas eliminar este dato?')) {
+                // Si el usuario hace clic en "Aceptar", redirige al servlet con la acción de eliminar
+                window.location.href = '../../UsuarioServlet?accion=eliminar&idUsu=' + idUsuario + '&idPer=' + idPersona;
+            } else {
+                // Si el usuario hace clic en "Cancelar", no hace nada
+            }
+        }
+        
     </script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

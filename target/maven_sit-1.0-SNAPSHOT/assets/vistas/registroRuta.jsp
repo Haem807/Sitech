@@ -38,19 +38,19 @@
                 
             <div class="d-flex flex-column  mt-3 mx-3">
             <label>COLOR</label>
-            <input class="" id="input-login" type="text" placeholder="Color" name="color" value="">
+            <input class="" id="input-login" type="text" placeholder="Color" name="color" value="" required>
           </div>
           <div class="d-flex flex-column mt-3 mx-3" >
             <label>NOMBRE RUTA</label>
-            <input class="" id="input-login" type="text" placeholder="Nombre Ruta" name="nombre_ruta" value="">
+            <input class="" id="input-login" type="text" placeholder="Nombre Ruta" name="nombre_ruta" value="" required>
           </div>
           <div class="d-flex flex-column mt-3 mx-3">
             <label>ORIGEN</label>
-            <input class="" id="input-login" type="text" placeholder="Origen" name="origen" value="">
+            <input class="" id="input-login" type="text" placeholder="Origen" name="origen" value="" required>
           </div>
           <div class="d-flex flex-column mt-3 mx-3">
             <label>DESTINO</label>
-            <input class="" id="input-login" type="text" placeholder="Destino" name="destino" value="">
+            <input class="" id="input-login" type="text" placeholder="Destino" name="destino" value="" required>
           </div>
           <div class="d-flex flex-column mt-3 mx-3">
             <label>Distrito</label>

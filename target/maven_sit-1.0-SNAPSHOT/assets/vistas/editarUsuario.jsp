@@ -46,7 +46,7 @@
               }*/
           %>
 
-        <form action="UsuarioServlet" class="d-flex row align-items-center justify-content-center" method="post">
+        <form action="${pageContext.request.contextPath}/UsuarioServlet" class="d-flex row align-items-center justify-content-center" method="post">
             <section class="col col-lg-6 d-flex  flex-column align-items-center">
                 <div class="d-flex flex-column mt-3 mx-3">
             <label>#</label>

@@ -19,6 +19,7 @@ import modelo.Usuario;
 import modeloDAO.UsuarioDAO;
 import modeloDTO.UsuarioDTO;
 import modeloDTO.UsuarioTransportistaDTO;
+import modeloDTO.ViajeDTO;
 
 /**
  *
@@ -110,12 +111,17 @@ public class ViajeServlet extends HttpServlet {
             }
             
         } else if(accion.equalsIgnoreCase("editar")){
-            int idUsu = Integer.parseInt(request.getParameter("idUsu"));
-            int idPer = Integer.parseInt(request.getParameter("idPer"));
-            UsuarioDTO u = usuDao.listarId2(idUsu, idPer);
-            request.setAttribute("usuario", u);
-            System.out.println("Llego editar!!!!" + u.getUsername());
-            RequestDispatcher dispatcher = request.getRequestDispatcher("./assets/vistas/editarUsuario.jsp"); // Reemplaza "/miVista.jsp" con la ruta real de tu JSP.
+            int idViaje = Integer.parseInt(request.getParameter("idViaje"));
+            ViajeDTO u = usuDao.listarIdViaje(idViaje);
+            request.setAttribute("Viaje", u);
+            System.out.println("Llego editar!!!!" + u.getIdViaje());
+            RequestDispatcher dispatcher = request.getRequestDispatcher("./assets/vistas/editarViaje.jsp"); // Reemplaza "/miVista.jsp" con la ruta real de tu JSP.
+            dispatcher.forward(request, response);
+            //response.sendRedirect("./assets/vistas/edit2.jsp");   
+        }else if(accion.equalsIgnoreCase("pagar")){
+            int idViaje = Integer.parseInt(request.getParameter("idViaje"));
+            usuDao.pagarViaje(idViaje);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("./assets/vistas/administrar_viajes.jsp"); // Reemplaza "/miVista.jsp" con la ruta real de tu JSP.
             dispatcher.forward(request, response);
             //response.sendRedirect("./assets/vistas/edit2.jsp");   
         }else if(accion.equalsIgnoreCase("eliminar")){
@@ -124,15 +130,9 @@ public class ViajeServlet extends HttpServlet {
             usuDao.eliminarViaje(id);
             response.sendRedirect("./assets/vistas/administrar_viajes.jsp");
         }else if(accion.equalsIgnoreCase("reactivar")){
-            int id = Integer.parseInt(request.getParameter("idUsu"));
-            int idrol = Integer.parseInt(request.getParameter("idRol"));
-            usuDao.reactivar(id);
-            if(idrol == 3)
-                response.sendRedirect("./assets/vistas/administrar_usuario.jsp");
-            else if(idrol == 2)
-                response.sendRedirect("./assets/vistas/administrar_transportistas.jsp");
-            else
-                response.sendRedirect("./assets/vistas/administrar_usuario.jsp");
+            int idViaje = Integer.parseInt(request.getParameter("idViaje"));
+            usuDao.reactivarViaje(idViaje);
+            response.sendRedirect("./assets/vistas/administrar_viajes.jsp");
         }
             else {
             // Credenciales incorrectas, muestra un mensaje de error
@@ -152,7 +152,31 @@ public class ViajeServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        // Recupera los parámetros del formulario
+        //Viaje
+        int idViaje = Integer.parseInt(request.getParameter("idViaje"));
+        int idHorarioViaje = Integer.parseInt(request.getParameter("idHorarioViaje"));
+        int color = Integer.parseInt(request.getParameter("color"));
+        int transporte = Integer.parseInt(request.getParameter("transporte"));
+        int conductor = Integer.parseInt(request.getParameter("conductor"));
+        int horario = Integer.parseInt(request.getParameter("horario"));
+        
+        double tarifa = Double.parseDouble(request.getParameter("tarifa"));
+        // Realiza la lógica de agregar aquí, por ejemplo
+        ViajeDTO u = new ViajeDTO();
+        u.setIdViaje(idViaje);
+        u.setIdHorarioViaje(idHorarioViaje);
+        u.setId_ruta(color);
+        u.setId_transporte(transporte);
+        u.setId_transportista(conductor);
+        u.setTarifa(tarifa);
+        u.setHorario(horario);
+        
+        
+        Boolean respuesta = usuDao.editarViaje2(u);
+        System.out.println("respuesta: " + color+transporte+conductor+horario);
+        // Redirige a una página de confirmación o a la vista de detalle del usuario
+        response.sendRedirect("./assets/vistas/administrar_viajes.jsp");
     }
 
     /**

@@ -37,6 +37,20 @@ $(document).ready(function() {
 				titleAttr: 'Imprimir',
 				className: 'btn btn-info'
 			},
-		]	        
+		],
+        initComplete: function() {
+            // Añadir estilos personalizados a las etiquetas language
+            $('.dataTables_info, .dataTables_length, .dataTables_filter, .dataTables_paginate').css('color', 'white');
+            // Añadir estilos personalizados al cuadro de búsqueda
+            $('.dataTables_filter input').css('color', 'white');
+            // Añadir estilos personalizados a los números en lengthMenu
+            $('.dataTables_length select').css('color', 'white');
+            $('.dataTables_length select').css('background-color', 'black');
+            // Añadir estilos personalizados al mensaje de zeroRecords
+            $('.dataTables_empty').css({
+                'background-color': 'black',
+                'color': 'white'
+            });
+        }
     });     
 });
